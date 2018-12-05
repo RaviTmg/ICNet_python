@@ -1,0 +1,4 @@
+idx	label
+0	n:o:n:e
+1	f:l:o:o:r
+2	f:l:o:o:r:i:n:g
