@@ -1,10 +1,17 @@
 import scipy.io as sio
 import numpy as np
 import tensorflow as tf
+matfn = './utils/color150.mat'
+def read_labelcolours(matfn, num_classes):
+    mat = sio.loadmat(matfn)
+    color_table = mat['colors']
+    shape = color_table.shape
+    color_list = [tuple(color_table[i]) for i in range(shape[0])]
 
+    return color_list[0:num_classes]
 def decode_labels(mask, img_shape, num_classes):
+    color_table = read_labelcolours(matfn, num_classes)
     
-    color_table = [[0, 0, 0], [80, 50, 50]]
 
     color_mat = tf.constant(color_table, dtype=tf.float32)
     onehot_output = tf.one_hot(mask, depth=num_classes)

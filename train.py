@@ -157,10 +157,10 @@ def main():
 
         duration = time.time() - start_time
 
-    
-        print('step {:d} \t total loss = {:.3f}, sub4 = {:.3f}, sub24 = {:.3f}, sub124 = {:.3f}, val_loss: {:.3f} ({:.3f} sec/step)'.\
-                    format(step, loss_value, loss1, loss2, loss3, val_loss_value, duration))
-    
+        if step % 20 == 0:
+            print('step {:d} \t total loss = {:.3f}, sub4 = {:.3f}, sub24 = {:.3f}, sub124 = {:.3f}, val_loss: {:.3f} ({:.3f} sec/step)'.\
+                        format(step, loss_value, loss1, loss2, loss3, val_loss_value, duration))
+        
     
 if __name__ == '__main__':
     main()

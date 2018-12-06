@@ -3,11 +3,11 @@ import os
 
 class Config(object):
     # Setting dataset directory
-    ADE_RELABEL_DATA_DIR = './ADERelabelled/'
+    ADE_RELABEL_DATA_DIR = './ADErelabelled/'
       
-    ADERELABEL_eval_list = os.path.join('ICNet_python/data/list/aderelabel_val_list.txt')
+    ADERELABEL_eval_list = os.path.join('ICNet_python/data/list/aderelabeled_val_list.txt')
 
-    ADERELABEL_train_list = os.path.join('ICNet_python/data/list/aderelabel_train_list.txt')
+    ADERELABEL_train_list = os.path.join('ICNet_python/data/list/aderelabeled_train_list.txt')
     
     IMG_MEAN = np.array((103.939, 116.779, 123.68), dtype=np.float32)
 
@@ -30,7 +30,7 @@ class Config(object):
     ## You can modify following lines to train different training configurations.
     INFER_SIZE = [512, 1024, 3] 
     TRAINING_SIZE = [720, 720] 
-    TRAINING_STEPS = 201
+    TRAINING_STEPS = 2001
     
     N_WORKERS = 8
     BATCH_SIZE = 16
@@ -41,7 +41,7 @@ class Config(object):
     WEIGHT_DECAY = 0.0001
     SNAPSHOT_DIR = './snapshots/'
     SAVE_NUM_IMAGES = 4
-    SAVE_PRED_EVERY = 40
+    SAVE_PRED_EVERY = 200
     
     # Loss Function = LAMBDA1 * sub4_loss + LAMBDA2 * sub24_loss + LAMBDA3 * sub124_loss
     LAMBDA1 = 0.16
