@@ -20,7 +20,6 @@ def get_arguments():
                         choices=['train', 'trainval', 'train_bn', 'trainval_bn', 'others'],
                         required=True)
     parser.add_argument("--dataset", type=str, default='',
-                        choices=['ade20k', 'cityscapes'],
                         required=True)
     parser.add_argument("--filter-scale", type=int, default=1,
                         help="1 for using pruned model, while 2 for using non-pruned model.",
@@ -46,11 +45,8 @@ def main():
     gt = tf.cast(tf.gather(label_flatten, indices), tf.int32)
     pred = tf.gather(pred_flatten, indices)
 
-    if cfg.dataset == 'ade20k':
-        pred = tf.add(pred, tf.constant(1, dtype=tf.int64))
-        mIoU, update_op = tf.metrics.mean_iou(predictions=pred, labels=gt, num_classes=cfg.param['num_classes']+1)
-    elif cfg.dataset == 'cityscapes':
-        mIoU, update_op = tf.metrics.mean_iou(predictions=pred, labels=gt, num_classes=cfg.param['num_classes'])
+    
+    mIoU, update_op = tf.metrics.mean_iou(predictions=pred, labels=gt, num_classes=cfg.param['num_classes'])
     
     net.create_session()
     net.restore(cfg.model_paths[args.model])

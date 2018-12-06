@@ -42,7 +42,7 @@ class Inference:
             image = cv2.resize(image, (INFER_SIZE[1], INFER_SIZE[0]))
         
         output = self.sess.run(OUTPUT_TENSOR_NAME, 
-        feed_dict={INPUT_TENSOR_NAME: image})
+                feed_dict={INPUT_TENSOR_NAME: image})
 
         #op = cv2.resize(output[0]/255.0,(shp[1], shp[0]))
 

@@ -10,3 +10,6 @@ ADERelabelled
 *.pb
 *.ipynb
 *.zip
+*.json
+*.js
+node_modules/

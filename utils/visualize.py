@@ -4,7 +4,7 @@ import tensorflow as tf
 
 def decode_labels(mask, img_shape, num_classes):
     
-    color_table = [[128, 64, 128], [244, 35, 231]]
+    color_table = [[0, 0, 0], [80, 50, 50]]
 
     color_mat = tf.constant(color_table, dtype=tf.float32)
     onehot_output = tf.one_hot(mask, depth=num_classes)
